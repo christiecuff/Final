@@ -92,16 +92,17 @@ in there except for bunch of papers scartered eery where on the floor
 #inventory:
     if choice == "5":
 		def printInventory():
-	items = {}
-	if len(player.inventory) > 0:
-		slowPrint("Here is your inventory:")
-		for item in player.inventory:
-			if item in items:
-				items[item] = items[item] + 1
+			items = {}
+			if len(player.inventory) > 0:
+				slowPrint("Here is your inventory:")
+				for item in player.inventory:
+					if item in items:
+						items[item] = items[item] + 1
+					else:
+						items[item] = 1
+				for item in items:
+					slowPrint(item.capitalize() + ": " + str(items[item]))
 			else:
-				items[item] = 1
-		for item in items:
-			slowPrint(item.capitalize() + ": " + str(items[item]))
-	else:
-		slowPrint("Your inventory is empty")
-		
+				slowPrint("Your inventory is empty")
+
+#items:
