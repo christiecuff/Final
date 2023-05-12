@@ -15,3 +15,19 @@ Kelsey Henderson (wife) and Alfred Conley (butler)
 ''')
 input('\t\t\t\t\t\tEnter to continue')
 
+#Menu:
+    choice = None  
+while choice != "0":
+	print \
+	("""
+	       Man's Homocide
+	0 - Quit
+	1 - Save
+	2 - Load
+	3 - Suspects statements
+	4 - Map
+	5 - Inventory
+	""")
+
+	choice = input("Option:\n")
+
