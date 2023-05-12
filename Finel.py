@@ -50,3 +50,10 @@ while choice != "0":
 				save(os.getcwd() + newName, player)
 		else:
 			save(os.getcwd() + name + ".dat", player)
+#loading:
+    if choice == "2":
+        location = input("Save file? ")
+		if os.path.exists(os.getcwd() + location):
+			player = load(os.getcwd() + location)
+		else:
+			print("Save not found!")
