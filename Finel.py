@@ -31,3 +31,6 @@ while choice != "0":
 
 	choice = input("Option:\n")
 
+#exit:
+	if choice == "0":
+		print("Good-bye.")
