@@ -1,3 +1,26 @@
+class player():
+	def __init__(self, pos, inventory, size, solution):
+		self.pos = pos
+		self.inventory = inventory
+		self.inventorySize = size
+		self.solution = solution
+
+	def getDict(self):
+		return {'pos':self.pos,'inv':self.inventory,'size':self.inventorySize,'solution':self.solution}
+	
+	def setPlayerFromDict(self, dict):
+		self.pos = dict['pos']
+		self.inventory = dict['inv']
+		self.inventorySize = dict['size']
+		self.solution = dict['solution']
+
+
+Weapons = ['knife','pen']
+Rooms = ['study','hallway','dining','kitchen','ballroom','library','bathroom','closet','living']
+RoomOrder = [['kitchen','hallway','dining'],['library','ballroom','study'],['bathroom','living','closet']]
+People = ['maid', 'cook', 'wife', 'butler']
+Items = ['book','bucket','mop','music','keys']
+
 print("\tMan's Homocide\n")
 name = input(f'State your name:\n')
 
@@ -16,7 +39,7 @@ Kelsey Henderson (wife) and Alfred Conley (butler)
 input('\t\t\t\t\t\tEnter to continue')
 
 #Menu:
-    choice = None  
+choice = None  
 while choice != "0":
 	print \
 	("""
@@ -38,8 +61,8 @@ while choice != "0":
 
 #getting help on saving and loading part
 #saving:
-    if choice == "1":
-       if os.path.exists(os.getcwd() + name + ".dat"):
+	if choice == "1":
+		if os.path.exists(os.getcwd() + name + ".dat"):
 			overwrite = input("Save file exists, overwrite? [y/n]")
 			if overwrite == "y":
 				save(os.getcwd() + name + ".dat", player)
@@ -51,15 +74,15 @@ while choice != "0":
 		else:
 			save(os.getcwd() + name + ".dat", player)
 #loading:
-    if choice == "2":
-        location = input("Save file? ")
+	if choice == "2":
+		location = input("Save file? ")
 		if os.path.exists(os.getcwd() + location):
 			player = load(os.getcwd() + location)
 		else:
 			print("Save not found!")
 #statements:
-    if choice == "3":
-        print('''Millie Parker has been a maid in the in the Henderson
+	if choice == "3":
+		print('''Millie Parker has been a maid in the in the Henderson
 house hold for 8 years. She took care of Josh henderson after his parents 
 died in a car crash 2 years before he enharited the Henderson house.
 
@@ -87,22 +110,40 @@ in there except for bunch of papers scartered eery where on the floor
 		print('''Amina Bradford has been''')
 
 #map:
-    if choice == "4":
-
+	if choice == "4":
 #inventory:
-    if choice == "5":
+	if choice == "5":
 		def printInventory():
 			items = {}
 			if len(player.inventory) > 0:
-				slowPrint("Here is your inventory:")
-				for item in player.inventory:
+				print("Here is your inventory:")
 					if item in items:
+				for item in player.inventory:
 						items[item] = items[item] + 1
 					else:
 						items[item] = 1
 				for item in items:
-					slowPrint(item.capitalize() + ": " + str(items[item]))
+					print(item.capitalize() + ": " + str(items[item]))
 			else:
-				slowPrint("Your inventory is empty")
+				print("Your inventory is empty")
 
 #items:
+def addItem(item, count):
+	if item.lower() in Items and len(player.inventory)+count <= player.inventorySize:
+		for i in range(count):
+			player.inventory.append(item.lower())
+		print("Item(s) added to inventory")
+	elif not item.lower() in Items:
+		print('Item not found, here are the items available:')
+		for item in Items:
+			print(item.capitalize())
+	elif len(player.inventory) > player.inventorySize:
+		print('Iinventory is full')
+
+def removeItem(item, count):
+	if item in player.inventory:
+		for i in range(count):
+			player.inventory.remove(item)
+		print("Item(s) removed from inventory")
+	else:
+		print("Item not in inventory")
