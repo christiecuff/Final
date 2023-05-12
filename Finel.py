@@ -34,3 +34,19 @@ while choice != "0":
 #exit:
 	if choice == "0":
 		print("Good-bye.")
+
+
+#getting help on saving and loading part
+#saving:
+    if choice == "1":
+       if os.path.exists(os.getcwd() + name + ".dat"):
+			overwrite = input("Save file exists, overwrite? [y/n]")
+			if overwrite == "y":
+				save(os.getcwd() + name + ".dat", player)
+			elif overwrite == "n":
+				newName == ""
+				while not newName == name + ".dat":
+					newName = input("Save name? ")
+				save(os.getcwd() + newName, player)
+		else:
+			save(os.getcwd() + name + ".dat", player)
