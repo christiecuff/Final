@@ -57,3 +57,37 @@ while choice != "0":
 			player = load(os.getcwd() + location)
 		else:
 			print("Save not found!")
+#statements:
+    if choice == "3":
+        print('''Millie Parker has been a maid in the in the Henderson
+house hold for 8 years. She took care of Josh henderson after his parents 
+died in a car crash 2 years before he enharited the Henderson house.
+
+Her statement reads: she was in the libary putting some book away that 
+Mrs. Henderson gave her and after that she cleaned the libary. Then when to 
+the kitchen talking to Elliot about the food he has preparded for Mr. Henderson
+''')
+		input('\t\t\t\t\t\tEnter to continue')
+
+		print('''---------------------------------------------------------------------
+''')
+
+		print('''Georgis Valintine is new in the Henderson house hold. She 
+started 2 months ago, still geting use to things around the house.
+
+Her statement reads: Georgia was cleaning he master bedroom of Mrs. and Mr.
+Henderson, when cleaning out she realized the safe was left open nothing was 
+in there except for bunch of papers scartered eery where on the floor
+''')
+		input('\t\t\t\t\t\tEnter to continue')
+		
+		print('''---------------------------------------------------------------------
+''')
+
+		print('''Amina Bradford has been''')
+
+#map:
+    if choice == "4":
+
+#inventory:
+    if choice == "5":
