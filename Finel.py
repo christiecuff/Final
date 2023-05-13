@@ -1,18 +1,9 @@
-from time import sleep
+
 from random import randint
 import pickle
 import os
 import numpy
-#Description: Prints text at designated speed
 
-#Arguments:
-#	text: Text to print
-#	delay(Seconds): delay between characters, default:0.005 seconds
-def slowPrint(text, delay=0.005):
-	for i in text:
-		print(i, end='', flush=True)
-		sleep(delay)
-	print('')
 
 		
 #Description: Print map in primitive format		
@@ -31,7 +22,7 @@ def printMap(map):
 
 def printRoomMap(file):
 	file = open(file, 'r').read()
-	slowPrint(file)
+	print(file)
 
 #Description: Return option selected by user from list
 
@@ -43,14 +34,14 @@ def printRoomMap(file):
 #	String value of selected option
 def pickOption(options, questionText, name=True):
 	for i, o in enumerate(options):
-		slowPrint(str(i+1) + ": " + o + "\n")
+		print(str(i+1) + ": " + o + "\n")
 	failed = True
 	while failed:
 		printed = False
 		try:
 			optionSelected = int(input(questionText + ": "))
 		except:
-			slowPrint("Invalid selection!")
+			print("Invalid selection!")
 			printed = True
 		if optionSelected > 0 and optionSelected <= len(options):
 			failed = False
@@ -59,7 +50,7 @@ def pickOption(options, questionText, name=True):
 			else:
 				return optionSelected-1
 		elif not printed:
-			slowPrint("Invalid selection!")
+			print("Invalid selection!")
 
 
 class player():
@@ -111,13 +102,13 @@ class player():
 		if item.lower() in Items and len(player.inventory)+count <= player.inventorySize:
 			for i in range(count):
 				player.inventory.append(item.lower())
-			slowPrint("Item(s) added to inventory")
+			print("Item(s) added to inventory")
 		elif not item.lower() in Items:
-			slowPrint('Item not found, here are the items available:')
+			print('Item not found, here are the items available:')
 			for item in Items:
-				slowPrint(item.capitalize())
+				print(item.capitalize())
 		elif len(player.inventory) > player.inventorySize:
-			slowPrint('Iinventory is full')
+			print('Iinventory is full')
 
 	#Description: Remove item(s) from inventory
 
@@ -130,9 +121,9 @@ class player():
 		if item in player.inventory:
 			for i in range(count):
 				player.inventory.remove(item)
-			slowPrint("Item(s) removed from inventory")
+			print("Item(s) removed from inventory")
 		else:
-			slowPrint("Item not in inventory")
+			print("Item not in inventory")
 		
 	#Description: Prints the contents of the inventory
 
@@ -143,16 +134,16 @@ class player():
 	def printInventory(self):
 		items = {}
 		if len(player.inventory) > 0:
-			slowPrint("Here is your inventory:")
+			print("Here is your inventory:")
 			for item in player.inventory:
 				if item in items:
 					items[item] = items[item] + 1
 				else:
 					items[item] = 1
 			for item in items:
-				slowPrint(item.capitalize() + ": " + str(items[item]))
+				print(item.capitalize() + ": " + str(items[item]))
 		else:
-			slowPrint("Your inventory is empty")
+			print("Your inventory is empty")
 
 	#Description: Return rooms in 4 directions around position
 
