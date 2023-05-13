@@ -442,5 +442,4 @@ _________________________________|
 __________________________________''')
 #inventory:
 	if choice == "6":
-		printInventory()
-#items:
+		printInventory(self)
